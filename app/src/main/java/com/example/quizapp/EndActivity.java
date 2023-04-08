@@ -23,13 +23,15 @@ public class EndActivity extends AppCompatActivity {
         // Initialize elements
         TextView congratsText = findViewById(R.id.textView3);
         TextView scoreText = findViewById(R.id.textView5);
-        TextView scoreHeader = findViewById(R.id.textView4);
         Button changeActivity = findViewById(R.id.button7);
         Button finishButton = findViewById(R.id.button8);
         sharedPref = getSharedPreferences("MY_PREF", Context.MODE_PRIVATE);
         String savedName = sharedPref.getString("userName", "");
         String congrats = "Congratulations " + savedName + "!";
+        int score = getIntent().getIntExtra("score", 0);
+        String scores = score + " / 20";
         congratsText.setText(congrats);
+        scoreText.setText(scores);
 
         // Change Activity
         changeActivity.setOnClickListener(new View.OnClickListener() {

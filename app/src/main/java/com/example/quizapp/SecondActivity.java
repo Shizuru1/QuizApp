@@ -16,7 +16,7 @@ import java.util.Random;
 
 public class SecondActivity extends AppCompatActivity {
 
-    int qNumber, randInt1, randInt2, randInt3, randInt4, answer;
+    int qNumber, randInt1, randInt2, randInt3, randInt4, answer, score;
     String operator;
     Boolean answerCheck1 = false, answerCheck2 = false, answerCheck3 = false, answerCheck4 = false;
 
@@ -39,6 +39,7 @@ public class SecondActivity extends AppCompatActivity {
         randInt2 = rand.nextInt(10) + 1;
         randInt3 = rand.nextInt(4);
         randInt4 = rand.nextInt(4);
+        score = 0;
         qNumber = 1;
         String qText = "Question " + qNumber;
         qTextView.setText(qText);
@@ -91,6 +92,7 @@ public class SecondActivity extends AppCompatActivity {
                 // Next Question
                 if (qNumber >= 20) {
                     Intent i = new Intent(SecondActivity.this, EndActivity.class);
+                    i.putExtra("score", score);
                     startActivity(i);
                 } else {
                     ColorStateList resetColor = ColorStateList.valueOf(Color.parseColor("#FFEEEEEE"));
@@ -168,6 +170,7 @@ public class SecondActivity extends AppCompatActivity {
                 if (answerCheck1) {
                     // correct
                     ans1.setBackgroundTintList(green);
+                    score += 1;
                     answerCheck1 = false;
                 } else {
                     // incorrect
@@ -200,6 +203,7 @@ public class SecondActivity extends AppCompatActivity {
                 if (answerCheck2) {
                     // correct
                     ans2.setBackgroundTintList(green);
+                    score += 1;
                     answerCheck2 = false;
                 } else {
                     // incorrect
@@ -232,6 +236,7 @@ public class SecondActivity extends AppCompatActivity {
                 if (answerCheck3) {
                     // correct
                     ans3.setBackgroundTintList(green);
+                    score += 1;
                     answerCheck3 = false;
                 } else {
                     // incorrect
@@ -264,6 +269,7 @@ public class SecondActivity extends AppCompatActivity {
                 if (answerCheck4) {
                     // correct
                     ans4.setBackgroundTintList(green);
+                    score += 1;
                     answerCheck4 = false;
                 } else {
                     // incorrect
